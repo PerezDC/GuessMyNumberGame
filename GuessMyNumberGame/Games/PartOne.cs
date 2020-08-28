@@ -7,26 +7,26 @@ namespace GuessMyNumberGame
 {
     class PartOne
     {
-        public static int captureInput()
+        public static int captureInput(int max)
         {
             int usersNumber = 0;
 
             try
             {
-                Console.WriteLine("Enter a number ranging from 1 and 10.");
+                Console.Write($"\n\tEnter a number ranging from 1 and {max}: ");
                 usersNumber = Int32.Parse(Console.ReadLine());
 
-                while (usersNumber == 0 || usersNumber > 10)
+                while (usersNumber == 0 || usersNumber > max)
                 {
-                    Console.WriteLine($"\nYou entered {usersNumber}.");
-                    Console.WriteLine("Try again - Number must be within 1 and 10.");
+                    Console.WriteLine($"\n\n\tYou entered {usersNumber}.");
+                    Console.Write($"\tTry again - Number must be within 1 and {max}.");
                     usersNumber = Int32.Parse(Console.ReadLine());
                 }
             }
 
             catch (FormatException fe)
             {
-                Console.WriteLine("\nInvalid format.");
+                Console.Write("\n\tInvalid format.");
                 usersNumber = 0;
             }
 
@@ -51,7 +51,7 @@ namespace GuessMyNumberGame
                             if ((list.Length == 5 && usersValue == 5) || (list.Length == 5 && usersValue == 10))
                             {
                                 middleNum = list[list.Length / 2];
-                                Console.WriteLine($"\nThe middle value is {middleNum}.");
+                                Console.WriteLine($"\n\tThe middle value is {middleNum}.");
                                 tempList = new int[2];
                                 int j = 3;
 
@@ -68,7 +68,7 @@ namespace GuessMyNumberGame
 
                                 middleNum = list[list.Length / 2];
 
-                                Console.WriteLine($"\nThe middle value is {middleNum}.");
+                                Console.WriteLine($"\n\tThe middle value is {middleNum}.");
 
                                 tempList = new int[list.Length / 2];
 
@@ -84,15 +84,15 @@ namespace GuessMyNumberGame
 
                             list = tempList;
 
-                            Console.WriteLine($"The number {usersValue} is above the middle number; new list is:");
-                            Console.WriteLine("({0})", String.Join(", ", list));
+                            Console.WriteLine($"\n\tThe number {usersValue} is above the middle number; new list is:");
+                            Console.WriteLine("\t({0})", String.Join(", ", list));
                         }
 
                         else if (list[i] <= list[list.Length / 2])
                         {
                             int middleNum = list[list.Length / 2];
 
-                            Console.WriteLine($"\nThe middle value is {middleNum}.");
+                            Console.WriteLine($"\n\tThe middle value is {middleNum}.");
 
                             int[] tempList = new int[list.Length / 2];
 
@@ -105,14 +105,14 @@ namespace GuessMyNumberGame
 
                             list = tempList;
 
-                            Console.WriteLine($"The number {usersValue} is below the middle number, new list is:");
-                            Console.WriteLine("({0})", String.Join(", ", list));
+                            Console.WriteLine($"\n\tThe number {usersValue} is below the middle number, new list is:");
+                            Console.WriteLine("\t({0})", String.Join(", ", list));
                         }
 
                     }
                 }
             }
-            Console.WriteLine($"\nThe value searched for, {list[0]}, has been found. ");
+            Console.WriteLine($"\n\tThe value searched for, {list[0]}, has been found. ");
         }
 
     }
